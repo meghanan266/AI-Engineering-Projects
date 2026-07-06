@@ -1,0 +1,41 @@
+@page "/quiz"
+
+<div class="quiz-card">
+    <div class="quiz-header">
+        <span class="quiz-progress-label">Question @currentQuestionNumber of @numQuestions</span>
+        <span class="quiz-score">🏆 @pointsScored pts</span>
+    </div>
+
+    <div class="progress-track">
+        <div class="progress-fill" style="width: @(currentQuestionNumber * 100 / numQuestions)%"></div>
+    </div>
+
+    <p class="question">@(currentQuestionText ?? "Getting question...")</p>
+
+    <EditForm Model="@this" OnValidSubmit="@SubmitAnswerAsync" OnInvalidSubmit="@(() => answerInput.FocusAsync())">
+        <textarea @ref="@answerInput" @bind="@UserAnswer" placeholder="Type your answer..." disabled="@DisableForm"></textarea>
+        <DataAnnotationsValidator />
+        <ValidationMessage For="@(() => UserAnswer)" />
+        <button type="submit" class="btn btn-primary submit-btn" disabled="@DisableForm">Submit</button>
+    </EditForm>
+
+    @if (!string.IsNullOrEmpty(currentQuestionOutcome))
+    {
+        <div class="outcome @(lastAnswerCorrect == true ? "outcome-correct" : "outcome-incorrect")">
+            <span class="outcome-icon">@(lastAnswerCorrect == true ? "✅" : "❌")</span>
+            <span>@currentQuestionOutcome</span>
+        </div>
+
+        @if (currentQuestionNumber < numQuestions)
+        {
+            <button class="btn btn-primary" @onclick="@MoveToNextQuestionAsync">Next question</button>
+        }
+        else
+        {
+            <div class="quiz-complete">
+                <p><strong>That's all for the quiz. You got @pointsScored / @numQuestions points.</strong></p>
+                <a class="btn btn-primary" href="">Home</a>
+            </div>
+        }
+    }
+</div>
