@@ -7,6 +7,8 @@
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>CS1998;$(NoWarn)</NoWarn>
+    <UseFaissNet Condition="'$(OS)' == 'Windows_NT'">true</UseFaissNet>
+    <DefineConstants Condition="'$(UseFaissNet)' == 'true'">$(DefineConstants);USE_FAISS_NET</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,10 +17,13 @@
     <PackageReference Include="Microsoft.Extensions.AI.Ollama" />
     <PackageReference Include="SmartComponents.LocalEmbeddings" />
     <PackageReference Include="System.Numerics.Tensors" />
+    <PackageReference Include="FaissMask" Condition="'$(UseFaissNet)' != 'true'" />
+    <PackageReference Include="FaissNet" Condition="'$(UseFaissNet)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Support\issues.json.zip" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="runtimes\**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
