@@ -8,5 +8,6 @@ A collection of applied AI-powered applications — practical, working software 
 - **[Embeddings](./Embeddings)** — Text embedding demos: semantic similarity between words, cosine-similarity search over document titles, and FAISS-backed vector search over ~10,000 real GitHub issue titles.
 - **[LLM_ChatBot_Part_1](./LLM_ChatBot_Part_1)** — Core LLM chat patterns: streaming/non-streaming completion, structured-output extraction from text, and live categorization of Hacker News stories.
 - **[LLM_ChatBot_Part_2](./LLM_ChatBot_Part_2)** — Tool-calling chatbot plus a custom `IChatClient` middleware pipeline (forced-language replies, rate limiting, prompt-based function calling).
+- **[RAG_Chatbot](./RAG_Chatbot)** — A citation-backed RAG chatbot over PDF product manuals, using Qdrant for vector search, with a separate LLM-judged evaluation pipeline.
 
 More projects will be added here over time, each in its own top-level folder.
