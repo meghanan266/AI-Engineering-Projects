@@ -1,6 +1,6 @@
 # AI Engineering Projects
 
-A collection of applied AI-powered applications — practical, working software built on top of LLMs, not just notebooks or demos.
+AI/GenAI engineering portfolio (.NET, C#): RAG, agentic AI workflows, LLM integration, vector search, and prompt engineering — built with Azure OpenAI, Microsoft.Extensions.AI, and Qdrant. Practical, working applications, not notebooks or demos.
 
 ## Projects
 
